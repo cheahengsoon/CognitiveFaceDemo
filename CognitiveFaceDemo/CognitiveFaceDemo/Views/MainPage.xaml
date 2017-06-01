@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="CognitiveFaceDemo.Views.MainPage"
+             Title="メインメニュー">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ButtonTextColor">#3498DB</Color>
+            <!--HomeButton Style-->
+            <Style TargetType="Button">
+                <Setter Property="FontSize" Value="Large" />
+                <!--<Setter Property="FontFamily" Value="{StaticResource RalewayRegular}" />-->
+                <Setter Property="TextColor" Value="{StaticResource ButtonTextColor}" />
+                <Setter Property="BackgroundColor" Value="#EEF8FF" />
+                <Setter Property="BorderColor" Value="#E1F3FF" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="BorderRadius" Value="5" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="WidthRequest" Value="400" />
+                <!--<Setter Property="HeightRequest" Value="150" />-->
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Text="顔情報登録" Command="{Binding NavigateCommand}" CommandParameter="AddPersonPage" />
+        <Button Grid.Row="1" Text="顔認識デモ" Command="{Binding NavigateCommand}" CommandParameter="DemoFaceIdentify" />
+    </Grid>
+</ContentPage>

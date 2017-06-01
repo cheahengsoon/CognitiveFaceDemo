@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                prism:ViewModelLocator.AutowireViewModel="True"
+                x:Class="CognitiveFaceDemo.Views.AddPersonPage"
+                Title="顔情報一覧">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="5*" />
+        </Grid.ColumnDefinitions>
+        <StackLayout Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Orientation="Vertical">
+            <Button Text="顔登録" Command="{Binding NavigateCommand}" FontSize="Medium" />
+            <Button Text="削除" Command="{Binding DelPersonCommand}" FontSize="Medium" />
+        </StackLayout>
+        <StackLayout Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Orientation="Vertical"
+                     VerticalOptions="Start">
+            <Entry Text="{Binding AddPersonName}" Placeholder="登録する名前を入力して下さい" FontSize="Small" />
+            <Button Text="新規追加" Command="{Binding AddPersonCommand}" CommandParameter="{Binding AddPersonName}" FontSize="Medium" />
+        </StackLayout>
+        <ListView Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Persons}" SelectedItem="{Binding SelectedPerson}"
+                      VerticalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" Padding="5,0,0,0">
+                            <Label Text="{Binding Name, StringFormat='名前：{0}'}" FontSize="Medium"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+
+</ContentPage>
